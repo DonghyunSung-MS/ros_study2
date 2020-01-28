@@ -1,23 +1,20 @@
 #! /usr/bin/env python
 import rospy
-import system
-import tf2
+import sys
+import tf
 import tf2_ros
 import geometry_msgs.msg
 
 if __name__=="__main__":
-    # 입력 갯수 제한
+    # limit input argument
+    rospy.init_node('my_static_tf2_broadcaster')
     if len(sys.argv) < 8:
-        rospy.logerr('Invalid number of parameters\nusage: '
-                        './static_turtle_tf2_broadcaster.py '
-                        'child_frame_name x y z roll pitch yaw')
+        rospy.logerr("usage : " + str(sys.argv[0]) + " name x y z r p y")
         sys.exit(0)
     else:
         if sys.argv[1] == "world":
             rospy.logerr('Your static turtle name cannot be "world"')
             sys.exit(0)
-
-        rospy.init_node('my_static_tf2_broadcaster')
         # This class provides an easy way to publish coordinate frame transform information
         broadcaster = tf2_ros.StaticTransformBroadcaster()
         # geometry_msgs.TransformStamped
@@ -35,8 +32,8 @@ if __name__=="__main__":
         static_transformationStamped.transform.translation.y = float(sys.argv[3])
         static_transformationStamped.transform.translation.z = float(sys.argv[4])
 
-        quat = tf.transformation.quaternion_from_euler(
-            float(sys.argv[5]) float(sys.argv[6]) float(sys.argv[7])) # get rpy from user and convert it to quat
+        quat = tf.transformations.quaternion_from_euler(
+            float(sys.argv[5]), float(sys.argv[6]), float(sys.argv[7])) # get rpy from user and convert it to quat
         static_transformationStamped.transform.rotation.x = quat[0]
         static_transformationStamped.transform.rotation.y = quat[1]
         static_transformationStamped.transform.rotation.z = quat[2]
