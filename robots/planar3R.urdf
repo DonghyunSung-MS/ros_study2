@@ -1,0 +1,55 @@
+<robot name="planar3R">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="joint1" type="revolute">
+    <origin xyz="0 0 0.125" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <limit effort="30" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+  <link name="link1">
+    <visual>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="joint2" type="revolute">
+    <origin xyz="0 0 0.25" rpy="0 0 0" />
+    <axis xyz="1 0 0"/>
+    <parent link="link1"/>
+    <child link="link2"/>
+    <limit effort="30" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+  <link name="link2">
+    <visual>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="joint3" type="revolute">
+    <origin xyz="0 0 0.25" rpy="0 0 0" />
+    <axis xyz="1 0 0"/>
+    <parent link="link2"/>
+    <child link="link3"/>
+    <limit effort="30" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+  <link name="link3">
+    <visual>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
