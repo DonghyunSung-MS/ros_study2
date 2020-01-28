@@ -76,6 +76,8 @@ add_dependencies(publisher_cpp
 # add_executable(${PROJECT_NAME}_node src/ros_study2_node.cpp)
 
 add_executable(tf2_static_broadcaster_cpp src/tf2_static_broadcaster_cpp.cpp)
+add_executable(tf2_broadcaster_cpp src/tf2_broadcaster_cpp.cpp)
+add_executable(tf2_listener_cpp src/tf2_listener_cpp.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -93,6 +95,10 @@ add_executable(tf2_static_broadcaster_cpp src/tf2_static_broadcaster_cpp.cpp)
 # )
 
 target_link_libraries(tf2_static_broadcaster_cpp
+  ${catkin_LIBRARIES})
+target_link_libraries(tf2_broadcaster_cpp
+  ${catkin_LIBRARIES})
+target_link_libraries(tf2_listener_cpp
   ${catkin_LIBRARIES})
 #############
 ## Install ##
